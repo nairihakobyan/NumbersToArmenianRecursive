@@ -1,118 +1,117 @@
 package source;
 
-import java.util.HashMap;
-import java.util.Iterator;
+import java.math.BigDecimal;
 import java.util.LinkedHashMap;
-import java.util.Map; 
 
 public  class NumberToArmenianWordsSecondEdition {
-	private static final LinkedHashMap<Integer,String> smaller = new LinkedHashMap<Integer,String>(){
+	@SuppressWarnings("serial")
+	private static final LinkedHashMap<Long,String> smaller = new LinkedHashMap<Long,String>(){
 		
 {
-	put(0,"Զրո ");
-	put(1,"Մեկ ");
-	put(2,"Երկու ");
-	put(3,"Երեք ");
-	put(4,"Չորս ");
-	put(5,"Հինգ ");
-	put(6,"Վեց ");
-	put(7,"Յոթ ");
-	put(8,"Ութ ");
-	put(9,"Ինը ");
-	put(10,"Տաս ");
-	put(11,"Տասնմեկ ");
-	put(12,"Տասներկու ");
-	put(13,"Տասներեք ");
-	put(14,"Տասնչորս ");
-	put(15,"Տասնհինգ ");
-	put(16,"Տասնվեց ");
-	put(17,"Տասնյոթ ");
-	put(18,"Տասնութ ");
-	put(19,"Տասնինը ");
+	put(0l,"Զրո ");
+	put(1l,"Մեկ ");
+	put(2l,"Երկու ");
+	put(3l,"Երեք ");
+	put(4l,"Չորս ");
+	put(5l,"Հինգ ");
+	put(6l,"Վեց ");
+	put(7l,"Յոթ ");
+	put(8l,"Ութ ");
+	put(9l,"Ինը ");
+	put(10l,"Տաս ");
+	put(11l,"Տասնմեկ ");
+	put(12l,"Տասներկու ");
+	put(13l,"Տասներեք ");
+	put(14l,"Տասնչորս ");
+	put(15l,"Տասնհինգ ");
+	put(16l,"Տասնվեց ");
+	put(17l,"Տասնյոթ ");
+	put(18l,"Տասնութ ");
+	put(19l,"Տասնինը ");
 		
 	}
 	};
-	private static final LinkedHashMap<Integer,String> bigger = new LinkedHashMap<Integer,String>(){
+	@SuppressWarnings("serial")
+	private static final LinkedHashMap<Long,String> bigger = new LinkedHashMap<Long,String>(){
 		{	
-		put(10,"Տաս ");
-		put(20,"Քսան ");
-		put(30,"Երեսուն ");
-		put(40,"Քառասուն ");
-		put(50,"Հիսուն ");
-		put(60,"Վաթսուն ");
-		put(70,"Յոթանասուն ");
-		put(80,"Ութսուն ");
-		put(90,"Իննսուն ");
-		put(100,"Հարյուր ");
-		put(1000,"Հազար ");
-		put(1_000_000,"Միլիոն ");
-		put(1_000_000_000,"Միլիարդ ");
-//		put(1_000_000_000_000,"Տրիլիոն");
+		put(10l,"Տաս ");
+		put(20l,"Քսան ");
+		put(30l,"Երեսուն ");
+		put(40l,"Քառասուն ");
+		put(50l,"Հիսուն ");
+		put(60l,"Վաթսուն ");
+		put(70l,"Յոթանասուն ");
+		put(80l,"Ութսուն ");
+		put(90l,"Իննսուն ");
+		put(100l,"Հարյուր ");
+		put(1000l,"Հազար ");
+		put(1_000_000l,"Միլիոն ");
+		put(1_000_000_000l,"Միլիարդ ");
+		put(1_000_000_000_000l,"Տրիլիոն ");
 		
 	}
-	};
-	private static  String result ;
+	}; 
 	  
 	
-	private static String convert(Integer input) {
+	private static String convert(Double input) {
+		
+		
 		
 		if (input == 0)
 			return "";
-		if(input < 20) {
+		else if(input < 20) {
 			
-			return	smaller.get(max(input,smaller));
+			return	smaller.get(max(input.longValue(),smaller));
 		}
 		else if(input < 1000) {
 			if(input/100 > 1 )
-				return convert( (input / 100)) + 
-						bigger.get(max(input,bigger)) + 
-						convert( input % 100) ;
-			return bigger.get(max(input,bigger)) +
-					convert((input % 100) % 10);
+				return convert( (input / 100)) + bigger.get(max(input.longValue(),bigger)) + convert( input % 100) 
+				 ;
+			return bigger.get(max(input.longValue(),bigger)) + convert((input % 100) % 10) ;
 			
 		}
 		else if(input < 2000) {
 			if(input/1000 > 1 )
-				return (bigger.get(max(input,bigger))) + convert(input % 1000);
-			return bigger.get(max(input,bigger))+ convert(input % 1000);
+				return (bigger.get(max(input.longValue(),bigger))) + convert(input % 1000)  ;
+			return bigger.get(max(input.longValue(),bigger))+ convert(input % 1000)+"Dram";
 		}
 		else {
-			return convert(input / (max(input,bigger))) +
-					bigger.get(max(input,bigger)) +
-					convert(input % max(input,bigger));
+			return convert(input / (max(input.longValue(),bigger))) + bigger.get(max(input.longValue(),bigger)) +
+					convert(input % max(input.longValue(),bigger)) +"Dram";
 		}
 	} 
-	private static   int max(Integer num, LinkedHashMap<Integer, String>search ) {
-		Integer number = 0;
-		 for(Integer key :search.keySet()){
-			 	if(key.intValue()==num.intValue()) {
-	            	number = key.intValue();
+	
+	private static   Long max(Long num, LinkedHashMap<Long, String>search ) {
+		Long number = 0l;
+		 for(Long key :search.keySet()){
+			 	if(key == num) {
+	            	number =  key;
 	            	break;
 	            }
-			 	else if(key.intValue() < num.intValue()) 
-	            	number = key.intValue();
-	            
-//			 	if(i == 100 || num == 1000) {
-			 		
-			 	}
-		 	return number;
-	        }
-
-		
-		
-//		Iterator fd = search.entrySet().iterator();
-//		while(fd.hasNext()) {
-//			Map.Entry me = (Map.Entry)fd.next();
-//			if(search.getKey().intValue() <=num) {
-//				number =  search.getKey().intValue();
-//				
-//			}
-//		}
-		
-		
-		
+			 	else if(key  < num) 
+	            	number =  key;
+	      }
+		 return number;
+	}
 	
+	private static String decimalPart(Double in) {
+		BigDecimal dec = new BigDecimal(in.toString());
+		long  luma = (int)((dec.subtract(new BigDecimal(dec.toBigInteger())).floatValue())*100);
+//		Long luma = lu.longValue();
+		if (luma  == 0)
+			return "";
+		if(luma  < 20) {
+			
+			return	smaller.get(max(luma,smaller));
+		}
+		else   {
+			return convert( (Long.valueOf(luma).doubleValue() / 100)) + 
+					bigger.get(max(luma,bigger)) + convert( Long.valueOf(luma).doubleValue() % 100);
+		}
+		
+	}
+
 public static void main(String [] argc) {
-	System.out.println(NumberToArmenianWordsSecondEdition.convert(234567890));
+	System.out.println(decimalPart(999888777666555.02d)+"luma");
 }
 }
