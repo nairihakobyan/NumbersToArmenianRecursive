@@ -27,7 +27,7 @@ public  class NumberToArmenianWordsSecondEdition {
 	
 	private static String convert(Double input) {
 		if (input == 0)
-			return "";
+			return "Զրո ";
 		else if(input < 20) {
 			
 			return	smaller.get(max(input.longValue(),smaller));
@@ -42,7 +42,7 @@ public  class NumberToArmenianWordsSecondEdition {
 			
 		}
 		else if(input < 2000) {
-			if(input/1000 >= 2 )
+			if(input / 1000 >= 2 )
 				return (bigger.get(max(input.longValue(),bigger))) + convert(input % 1000)  ;
 			return bigger.get(max(input.longValue(),bigger))+ convert(input % 1000);
 		}
@@ -70,23 +70,25 @@ public  class NumberToArmenianWordsSecondEdition {
 	    long luma = (long) (bd.remainder( BigDecimal.ONE ).doubleValue()*100);
  
 		if (luma  == 0)
-			return "Զրո";
+			return "Զրո ";
 		if(luma  < 20) {
 			
 			return	smaller.get(max(luma,smaller));
 		}
 		else   {
-			return  
-					bigger.get(max(luma,bigger)) + convert( Long.valueOf(luma).doubleValue() % 10);
+			return  bigger.get(max(luma,bigger)) + convert( Long.valueOf(luma).doubleValue() % 10);
 		}
 	}
 
 public static void main(String [] argc) {
 	
-	Scanner scan = new Scanner(System.in);
-	System.out.println("Enter a number: \n");
-	Double num = scan.nextDouble();
+	Scanner scan = new Scanner(System.in); 
+	for(int i = 0; i < 10;i++) {
+		System.out.println("Enter a number: \n");
+		Double num = scan.nextDouble();
+		System.out.println(convert(num) + " Դրամ " + decimalPart(num.toString()) + " Լումա ");
+	}
+	scan.close();
 	
-	System.out.println( convert(num)+" Դրամ "+decimalPart(num.toString())+" Լումա");
 }
 }
