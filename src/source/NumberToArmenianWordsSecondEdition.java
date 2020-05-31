@@ -24,13 +24,11 @@ public  class NumberToArmenianWordsSecondEdition {
 		}
 	}; 
 	  
-	
 	private static String convert(Double input) {
 		if (input == 0)
 			return "Զրո ";
 		else if(input < 20) {
-			
-			return	smaller.get(max(input.longValue(),smaller));
+			 return	smaller.get(max(input.longValue(),smaller));
 		}
 		else if(input < 100) {
 			return bigger.get(max(input.longValue(),bigger))+ convert(input % 10 );
@@ -53,7 +51,7 @@ public  class NumberToArmenianWordsSecondEdition {
 	} 
 	
 	private static   Long max(Long num, LinkedHashMap<Long, String>search ) {
-		Long number = 0l;
+		 Long number = 0l;
 		 for(Long key :search.keySet()){
 			 	if(key == num) {
 	            	number =  key;
@@ -72,7 +70,6 @@ public  class NumberToArmenianWordsSecondEdition {
 		if (luma  == 0)
 			return "Զրո ";
 		if(luma  < 20) {
-			
 			return	smaller.get(max(luma,smaller));
 		}
 		else   {
@@ -86,7 +83,9 @@ public static void main(String [] argc) {
 	for(int i = 0; i < 10;i++) {
 		System.out.println("Enter a number: \n");
 		Double num = scan.nextDouble();
-		System.out.println(convert(num) + " Դրամ " + decimalPart(num.toString()) + " Լումա ");
+		if(num < 1000000000000000l && num > 0)
+			System.out.println(convert(num) + " Դրամ " + decimalPart(num.toString()) + " Լումա \n");
+		else { System.out.println("Wrong input , try again:\n "); }
 	}
 	scan.close();
 	
