@@ -9,7 +9,7 @@ public  class NumberToArmenianWordsSecondEdition {
 	@SuppressWarnings("serial")
 	private static final LinkedHashMap<Long,String> smaller = new LinkedHashMap<Long,String>(){
 		
-{	put(0l,"Զրո ");put(1l,"Մեկ ");put(2l,"Երկու ");put(3l,"Երեք ");put(4l,"Չորս ");put(5l,"Հինգ ");put(6l,"Վեց ");
+{	put(0l,"");put(1l,"Մեկ ");put(2l,"Երկու ");put(3l,"Երեք ");put(4l,"Չորս ");put(5l,"Հինգ ");put(6l,"Վեց ");
 	put(7l,"Յոթ ");put(8l,"Ութ ");put(9l,"Ինը ");put(10l,"Տաս ");put(11l,"Տասնմեկ ");put(12l,"Տասներկու ");
 	put(13l,"Տասներեք ");put(14l,"Տասնչորս ");put(15l,"Տասնհինգ ");put(16l,"Տասնվեց ");put(17l,"Տասնյոթ ");put(18l,"Տասնութ ");
 	put(19l,"Տասնինը ");
@@ -25,9 +25,7 @@ public  class NumberToArmenianWordsSecondEdition {
 	}; 
 	  
 	private static String convert(Double input) {
-		if (input == 0)
-			return "Զրո ";
-		else if(input < 20) {
+		if(input < 20) {
 			 return	smaller.get(max(input.longValue(),smaller));
 		}
 		else if(input < 100) {
@@ -39,9 +37,9 @@ public  class NumberToArmenianWordsSecondEdition {
 			return bigger.get(max(input.longValue(),bigger)) + convert((input % 100) ) ;
 			
 		}
-		else if(input < 2000) {
+		else if(input < 10000) {
 			if(input / 1000 >= 2 )
-				return (bigger.get(max(input.longValue(),bigger))) + convert(input % 1000)  ;
+				return convert( (input / 1000))+(bigger.get(max(input.longValue(),bigger))) + convert(input % 1000)  ;
 			return bigger.get(max(input.longValue(),bigger))+ convert(input % 1000);
 		}
 		else {
@@ -64,7 +62,7 @@ public  class NumberToArmenianWordsSecondEdition {
 	}
 	
 	private static String decimalPart(String in) {
-		BigDecimal bd = new BigDecimal(in).setScale(3, RoundingMode.FLOOR);
+		BigDecimal bd = new BigDecimal(in).setScale(2, RoundingMode.FLOOR);
 	    long luma = (long) (bd.remainder( BigDecimal.ONE ).doubleValue()*100);
  
 		if (luma  == 0)
@@ -85,6 +83,7 @@ public static void main(String [] argc) {
 		Double num = scan.nextDouble();
 		if(num < 1000000000000000l && num > 0)
 			System.out.println(convert(num) + " Դրամ " + decimalPart(num.toString()) + " Լումա \n");
+		else if(num == 0)System.out.println("Զրո Դրամ Զրո Լումա");
 		else { System.out.println("Wrong input , try again:\n "); }
 	}
 	scan.close();
