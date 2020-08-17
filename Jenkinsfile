@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('compile') {
             steps {
-                script usr/lib/jvm/java-8-openjdk-amd64/bin/javac src/source/NumberToArmenianWordsSecondEdition.java
+                script 'usr/lib/jvm/java-8-openjdk-amd64/bin/javac src/source/NumberToArmenianWordsSecondEdition.java'
             }
         }
           
