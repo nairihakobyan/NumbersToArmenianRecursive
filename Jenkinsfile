@@ -1,25 +1,11 @@
 pipeline {
       
-       agent any
-         
-       stages {
-         
-         stage("build") {
-               steps {
-                 echo 'building application..'
-               } 
-          }
-          
-          stage("test") {
-               steps {
-                 echo 'testing application..'
-               } 
-          }
-          
-          stage("deploying") {
-               steps {
-                 echo 'building application..'
-               } 
-          }
-       }    
+      agent { docker { image 'java:latest' } }
+    stages {
+        stage('build') {
+            steps {
+                sh /usr/lib/jvm/java-11-openjdk-14.0.2/bin/javac src/source/NumberToArmenianWordsAecondEdition.java
+            }
+        }
+    }
 }         
