@@ -1,6 +1,6 @@
 pipeline {
       
-      agent { docker { image 'java:latest' } }
+    agent any
     stages {
         stage('build') {
             steps {
