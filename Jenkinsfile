@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                batch javac src/source/NumberToArmenianWordsAecondEdition.java
+                batch 'javac src/source/NumberToArmenianWordsSecondEdition.java'
             }
         }
     }
