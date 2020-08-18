@@ -77,16 +77,17 @@ public  class NumberToArmenianWordsSecondEdition {
 
 public static void main(String [] argc) {
 	
-	Scanner scan = new Scanner(System.in); 
-	for(int i = 0; i < 10;i++) {
-		System.out.println("Enter a number: \n");
-		Double num = scan.nextDouble();
+//	Scanner scan = new Scanner(System.in); 
+//	for(int i = 0; i < 10;i++) {
+//		System.out.println("Enter a number: \n");
+//		Double num = scan.nextDouble();
+		Double num=12345667788d;
 		if(num < 1000000000000000l && num > 0)
 			System.out.println(convert(num) + " Դրամ " + decimalPart(num.toString()) + " Լումա \n");
 		else if(num == 0)System.out.println("Զրո Դրամ Զրո Լումա");
 		else { System.out.println("Wrong input , try again:\n "); }
 	}
-	scan.close();
+//	scan.close();
 	
 }
 }
