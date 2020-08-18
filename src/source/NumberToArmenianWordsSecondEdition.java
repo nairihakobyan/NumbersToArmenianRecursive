@@ -86,7 +86,7 @@ public static void main(String [] argc) {
 			System.out.println(convert(num) + " Դրամ " + decimalPart(num.toString()) + " Լումա \n");
 		else if(num == 0)System.out.println("Զրո Դրամ Զրո Լումա");
 		else { System.out.println("Wrong input , try again:\n "); }
-	}
+//	}
 //	scan.close();
 	
 }
