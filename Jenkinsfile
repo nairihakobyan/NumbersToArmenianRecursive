@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('compile') {
             steps {
-                sh 'javac src/source/NumberToArmenianWordsSecondEdition.java'
+                sh '/usr/lib/jvm/java-1.11.0-openjdk-amd64/bin/javac src/source/NumberToArmenianWordsSecondEdition.java '
             }
         }
           
         stage('build') {
             steps {
-                echo 'some issue accured,so lets finish saying "Hello World"'
+                sh '/usr/lib/jvm/java-1.11.0-openjdk-amd64/bin/java src/source/NumberToArmenianWordsSecondEdition.java'
             }
         }
    }
