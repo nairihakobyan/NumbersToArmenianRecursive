@@ -82,6 +82,8 @@ public static void main(String [] argc) {
 //		System.out.println("Enter a number: \n");
 //		Double num = scan.nextDouble();
 		Double num=12345667788d;
+ 		String number=num.toString();
+ 		System.out.println("Entered number is"+number);
 		if(num < 1000000000000000l && num > 0)
 			System.out.println(convert(num) + " Դրամ " + decimalPart(num.toString()) + " Լումա \n");
 		else if(num == 0)System.out.println("Զրո Դրամ Զրո Լումա");
