@@ -63,7 +63,7 @@ public  class NumberToArmenianWordsSecondEdition {
 	
 	private static String decimalPart(String in) {
 		BigDecimal bd = new BigDecimal(in).setScale(2, RoundingMode.FLOOR);
-	    long luma = (long) (bd.remainder( BigDecimal.ONE ).doubleValue()*100);
+       	        long luma = (long) (bd.remainder( BigDecimal.ONE ).doubleValue()*100);
  
 		if (luma  == 0)
 			return "Զրո ";
@@ -82,7 +82,7 @@ public static void main(String [] argc) {
 //		System.out.println("Enter a number: \n");
 //		Double num = scan.nextDouble();
 		Double num=12345667788.1234d; //number to format
- 		String number=String.format("%.2f",num); 
+ 		String number=String.format("%.3f",num); 
 
  		System.out.println("Entered number is "+number);
 
