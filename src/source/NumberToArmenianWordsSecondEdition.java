@@ -51,14 +51,14 @@ public  class NumberToArmenianWordsSecondEdition {
 	private static   Long max(Long num, LinkedHashMap<Long, String>search ) {
 		 Long number = 0l;
 		 for(Long key :search.keySet()){
-			 	if(key == num) {
+		    if(key == num) {
 	            	number =  key;
 	            	break;
 	            }
-			 	else if(key  < num) 
-	            	number =  key;
-	      }
-		 return number;
+        	    else if(key  < num) 
+            	        number =  key;
+	            }
+		   return number;
 	}
 	
 	private static String decimalPart(String in) {
@@ -82,7 +82,7 @@ public static void main(String [] argc) {
 //		System.out.println("Enter a number: \n");
 //		Double num = scan.nextDouble();
 		Double num=12345667788.12d;
- 		String number=num.toString();
+ 		String number=String.format("%.2f",num);
  		System.out.println("Entered number is "+number);
 		if(num < 1000000000000000l && num > 0)
 			System.out.println(convert(num) + " Դրամ " + decimalPart(num.toString()) + " Լումա \n");
