@@ -81,7 +81,7 @@ public static void main(String [] argc) {
 //	for(int i = 0; i < 10;i++) {
 //		System.out.println("Enter a number: \n");
 //		Double num = scan.nextDouble();
-		Double num=12345667788.12d; //number to format
+		Double num=12345667788.1234d; //number to format
  		String number=String.format("%.2f",num); 
 
  		System.out.println("Entered number is "+number);
