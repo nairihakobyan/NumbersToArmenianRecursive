@@ -81,7 +81,7 @@ public static void main(String [] argc) {
 //	for(int i = 0; i < 10;i++) {
 //		System.out.println("Enter a number: \n");
 //		Double num = scan.nextDouble();
-		Double num=12345667788d;
+		Double num=12345667788.12d;
  		String number=num.toString();
  		System.out.println("Entered number is "+number);
 		if(num < 1000000000000000l && num > 0)
