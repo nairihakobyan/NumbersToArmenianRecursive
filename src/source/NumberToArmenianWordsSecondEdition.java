@@ -81,13 +81,17 @@ public static void main(String [] argc) {
 //	for(int i = 0; i < 10;i++) {
 //		System.out.println("Enter a number: \n");
 //		Double num = scan.nextDouble();
-		Double num=12345667788.12d;
- 		String number=String.format("%.2f",num);
+		Double num=12345667788.12d; //number to format
+ 		String number=String.format("%.2f",num); 
+
  		System.out.println("Entered number is "+number);
+
 		if(num < 1000000000000000l && num > 0)
-			System.out.println(convert(num) + " Դրամ " + decimalPart(num.toString()) + " Լումա \n");
-		else if(num == 0)System.out.println("Զրո Դրամ Զրո Լումա");
-		else { System.out.println("Wrong input , try again:\n "); }
+			System.out.println(convert(num) + " Դրամ " + decimalPart(num.toString()) + " Լումա \n"); // magic starts
+		
+                else if(num == 0)System.out.println("Զրո Դրամ Զրո Լումա");
+		
+                else { System.out.println("Wrong input , try again:\n "); }
 //	}
 //	scan.close();
 	
